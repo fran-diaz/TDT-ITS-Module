@@ -62,8 +62,6 @@ class tdt extends base_component implements components_interface {
 
 		$json = file_get_contents( ROOT_PATH.'resources/channels.json' );
 		$j = json_decode($json, true);
-
-		
 		?>
 
 		<div class="tdt__channels col-4 h-100 position-absolute white_bg border-right overflow-auto" style="top:0;left:-1000px;z-index:100;">
@@ -81,7 +79,7 @@ class tdt extends base_component implements components_interface {
 				var video = document.getElementById('video');
 				  	//var videoSrc = 'https://www.tdtchannels.com/lists/combo_channels.m3u8';
 				  	<?php
-				  	if( ! is_null( $this -> session('tdt','channel-selected') ) ){
+				  	if( ! is_null( $this -> session('tdt','channel-selected') ) ) {
 				  		echo 'var videoSrc = \''.$this -> session('tdt','channel-selected').'\';';
 				  	} else {
 				  		echo 'var videoSrc = \'https://rtvelivestream.akamaized.net/24h_dvr.m3u8\';';
