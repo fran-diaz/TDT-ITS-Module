@@ -20,5 +20,4 @@ $(document).on('click','.tdt__channels span',function(e){
 
 $(document).on('click','.tdt__open-channels',function(e){
     $('.tdt__channels').animate({left: '+=1000'});
-
 });
