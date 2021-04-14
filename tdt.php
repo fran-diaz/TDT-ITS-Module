@@ -26,7 +26,7 @@ class tdt extends base_component implements components_interface {
 		$html = '';
 
 		ob_start();
-		
+
 		function buildMenu(array $menu_array, $is_sub=FALSE) {
 		   	/*if( isset($menu_array['ambits']) ){
 		   		$ul_attrs = $is_sub ? 'class="dropdown-submenu"' : 'class="nav navbar-nav"';
@@ -81,8 +81,8 @@ class tdt extends base_component implements components_interface {
 				var video = document.getElementById('video');
 				  	//var videoSrc = 'https://www.tdtchannels.com/lists/combo_channels.m3u8';
 				  	<?php
-				  	if( isset( $_SESSION['tdt_channel-selected'] ) ){
-				  		echo 'var videoSrc = \''.$_SESSION['tdt_channel-selected'].'\';';
+				  	if( isset( $this -> session('tdt','channel-selected') ) ){
+				  		echo 'var videoSrc = \''.$this -> session('tdt','channel-selected').'\';';
 				  	} else {
 				  		echo 'var videoSrc = \'https://rtvelivestream.akamaized.net/24h_dvr.m3u8\';';
 				  	}
