@@ -1,13 +1,8 @@
 <?php
-/**
- * Componente text
- */
 
 class tdt extends base_component implements components_interface {
 	
 	public function generate_dropdown( array $values = [] ) : string {
-		global $_ITE;
-
 		$dropdown_template = '<div class="menu btn-group float-right">
 						<button class="btn p-0 mr-3 tdt__open-channels" type="button" title="Abrir listado de canales">
 					        <i class="mdi mdi-table-column"></i>
@@ -22,13 +17,12 @@ class tdt extends base_component implements components_interface {
 					        ##CONTENT##
 					    </div>
 					</div>';
-		$html = $_ITE -> funcs -> replace_in_template( $dropdown_template, ['CONTENT' => implode( '', $values ) ] );
+		$html = $this -> _ITE -> funcs -> replace_in_template( $dropdown_template, ['CONTENT' => implode( '', $values ) ] );
 
 		return $html;
 	}
 
-	public function make() : string {
-		global $_ITE, $_ITEC;
+	public function make_tdt() : string {
 		$html = '';
 		?>
 		<!-- Component text start -->
@@ -80,11 +74,7 @@ class tdt extends base_component implements components_interface {
 					   return $menu . "</ul>"; 
 					}
 
-					/*if( $_ITE -> files -> is_old(ROOT_PATH.'resources/combo_channels.m3u8')){
-						file_put_contents(ROOT_PATH.'resources/combo_channels.m3u8', fopen('https://hlsliveamdgl8-lh.akamaihd.net/i/hlsdvrlive_1@583030/master.m3u8', 'r'));
-					}*/
-
-					if( $_ITE -> files -> is_old_seconds(ROOT_PATH.'resources/channels.json',1)){
+					if( $this -> _ITE -> files -> is_old_seconds(ROOT_PATH.'resources/channels.json',1)){
 						file_put_contents(ROOT_PATH.'resources/channels.json', fopen('https://www.tdtchannels.com/lists/tv.json', 'r'));
 					}
 
@@ -197,5 +187,9 @@ class tdt extends base_component implements components_interface {
 		<!-- Component text End -->
 		<?php
 		return $html;
+	}
+
+	public function gen_content( ) : string {		
+		return $this -> make_tdt();
 	}
 }
