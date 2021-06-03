@@ -42,26 +42,30 @@ class tdt extends base_component implements components_interface {
 		     } elseif ( isset($attrs['channels']) ) {
 		     	$sub = buildMenu($attrs['channels'], TRUE);
 		     } else {
-		     	$sub = null;
+		     	$sub = '';
 		     }
 
 		      $li_attrs = $sub ? 'class="dropdown"' : null;
 		      $a_attrs  = $sub ? 'class="dropdown-toggle" data-toggle="dropdown"' : null;
 		      $carat    = $sub ? '<span class="caret"></span>' : null;
+		      
 		      $menu .= "<li $li_attrs>";
 		      $menu .= '<span '.$a_attrs.' data-tdtsrc="'.$attrs['options'][0]['url'].'">'.$attrs['name'].$carat.'</span>'.$sub;//text
+		  	  
 		      $menu .= "</li>";
+		  		
 		   }
 
 		   return $menu . "</ul>"; 
 		}
 
-		if( $this -> _ITE -> files -> is_old_seconds(ROOT_PATH.'resources/channels.json',1)){
+		if( $this -> _ITE -> files -> is_old_seconds(ROOT_PATH.'resources/channels.json',3600)){
 			file_put_contents(ROOT_PATH.'resources/channels.json', fopen('https://www.tdtchannels.com/lists/tv.json', 'r'));
 		}
 
 		$json = file_get_contents( ROOT_PATH.'resources/channels.json' );
 		$j = json_decode($json, true);
+		//var_dump($j);
 		?>
 
 		<div class="tdt__channels col-4 h-100 position-absolute white_bg border-right overflow-auto" style="top:0;left:-1000px;z-index:100;">
@@ -82,7 +86,7 @@ class tdt extends base_component implements components_interface {
 				  	if( ! is_null( $this -> session('tdt','channel-selected') ) ) {
 				  		echo 'var videoSrc = \''.$this -> session('tdt','channel-selected').'\';';
 				  	} else {
-				  		echo 'var videoSrc = \'https://rtvelivestream.akamaized.net/24h_dvr.m3u8\';';
+				  		echo 'var videoSrc = \'https://rtvelivestream.akamaized.net/24h_main_dvr.m3u8\';';
 				  	}
 				  	?>
 				  	//var videoSrc = '/resources/combo_channels.m3u8';
