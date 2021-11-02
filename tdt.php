@@ -49,10 +49,11 @@ class tdt extends base_component implements components_interface {
 		      $a_attrs  = $sub ? 'class="dropdown-toggle" data-toggle="dropdown"' : null;
 		      $carat    = $sub ? '<span class="caret"></span>' : null;
 		      
-		      $menu .= "<li $li_attrs>";
-		      $menu .= '<span '.$a_attrs.' data-tdtsrc="'.$attrs['options'][0]['url'].'">'.$attrs['name'].$carat.'</span>'.$sub;//text
-		  	  
-		      $menu .= "</li>";
+		      	if( isset( $attrs['options'][0]['url'] ) ){
+					$menu .= "<li $li_attrs>";
+					$menu .= '<span '.$a_attrs.' data-tdtsrc="'.$attrs['options'][0]['url'].'">'.$attrs['name'].$carat.'</span>'.$sub;//text
+					$menu .= "</li>";
+		  		}
 		  		
 		   }
 
@@ -95,7 +96,7 @@ class tdt extends base_component implements components_interface {
 				    	hls.loadSource(videoSrc);
 				    	hls.attachMedia(video);
 				    	hls.on(Hls.Events.MANIFEST_PARSED, function() {
-				      		video.play();
+				      		//video.play();
 				    	});
 				  	}
 				  // hls.js is not supported on platforms that do not have Media Source
@@ -114,7 +115,7 @@ class tdt extends base_component implements components_interface {
 				  else if (video.canPlayType('application/vnd.apple.mpegurl')) {
 				    video.src = videoSrc;
 				    video.addEventListener('loadedmetadata', function() {
-				      video.play();
+				      //video.play();
 				    }); 
 				  } else { 
 				  	alert('Streaming no soportado');
