@@ -86,7 +86,7 @@ class tdt extends base_component implements components_interface {
 				  	if( ! is_null( $this -> session('tdt','channel-selected') ) ) {
 				  		echo 'var videoSrc = \''.$this -> session('tdt','channel-selected').'\';';
 				  	} else {
-				  		echo 'var videoSrc = \''.$j['countries']['ambits']['channels'][0]['options'][0]['url'].'\';';
+				  		echo 'var videoSrc = \''.$j['countries'][0]['ambits'][0]['channels'][0]['options'][0]['url'].'\';';
 				  	}
 				  	?>
 				  	//var videoSrc = '/resources/combo_channels.m3u8';
