@@ -74,7 +74,7 @@ class tdt extends base_component implements components_interface {
 		<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 		<!-- Or if you want a more recent alpha version -->
 		<!-- <script src="https://cdn.jsdelivr.net/npm/hls.js@alpha"></script> -->
-		<video class="col-12" id="video" controls autoplay></video> 
+		<video class="col-12" id="video" controls></video> 
 
 		<script>
 			
@@ -86,7 +86,7 @@ class tdt extends base_component implements components_interface {
 				  	if( ! is_null( $this -> session('tdt','channel-selected') ) ) {
 				  		echo 'var videoSrc = \''.$this -> session('tdt','channel-selected').'\';';
 				  	} else {
-				  		echo 'var videoSrc = \'https://rtvelivestream.akamaized.net/24h_main_dvr.m3u8\';';
+				  		echo 'var videoSrc = \''.$j['countries']['ambits']['channels'][0]['options'][0]['url'].'\';';
 				  	}
 				  	?>
 				  	//var videoSrc = '/resources/combo_channels.m3u8';
